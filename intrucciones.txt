@@ -1,0 +1,28 @@
+en lugar de usar el comando nest usar -> npx @nestjs/cli  ....
+nuevo modulo : npx @nestjs/cli g mo post 
+nuevo servicio : npx @nestjs/cli g s post  
+nuevo controlador : npx @nestjs/cli g co post  
+nuevo clase : npx @nestjs/cli g class post  
+
+npx @nestjs/cli g class user/dtos/editUser.dto --no-spec
+
+1 - Clonamos el proyecto o lo creamos.
+2 - npm i class-validator class-transformer --save --save-dev
+3 - npm install --save @nestjs/swagger swagger-ui-express 
+4 - npm i @nestjs/typeorm --save --save-dev
+5 - npm install --save @nestjs/typeorm typeorm@0.2 mysql2
+6 - correr : npm run start:dev
+7 - ver la documentacion : http://localhost:3000/docs/
+8 - npm i bcryptjs --save --save-dev
+9 - npm i @types/bcryptjs --save --save-dev
+10 - npm i @nestjs/config --save --save-dev
+
+
+Auth
+
+1 - npm i @nestjs/passport passport passport-local  --save --save-dev
+2 - npm i @types/passport-local --save --save-dev
+3 - npm i @nestjs/jwt --save --save-dev
+4 - npm i passport-jwt --save --save-dev
+5 - npm i nest-access-control --save --save-dev
+6 - npm i nest-access-control --save --save-dev
