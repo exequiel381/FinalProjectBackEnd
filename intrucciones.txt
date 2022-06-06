@@ -1,3 +1,5 @@
+Video de despliegue en heroku : https://www.youtube.com/watch?v=P2gvIQRXIuc
+
 en lugar de usar el comando nest usar -> npx @nestjs/cli  ....
 nuevo modulo : npx @nestjs/cli g mo post 
 nuevo servicio : npx @nestjs/cli g s post  
@@ -26,3 +28,9 @@ Auth
 4 - npm i passport-jwt --save --save-dev
 5 - npm i nest-access-control --save --save-dev
 6 - npm i nest-access-control --save --save-dev
+7 - npm i -g ts-node
+
+Migraciones
+
+1 - desactivamos el synchronize - si queremos que se cambie solo , lo dejamos
+2 - npm run db:migration:generate nombre //estos comandos los definimos en packaje.json

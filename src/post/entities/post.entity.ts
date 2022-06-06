@@ -19,7 +19,7 @@ import {
     slug!: string;
   
     @Column({ type: 'varchar', length: 150 })
-    title!: string;
+    title2!: string;
   
     @Column({ type: 'varchar', length: 255 })
     excerpt?: string;
