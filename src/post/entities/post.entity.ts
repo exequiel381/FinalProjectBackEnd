@@ -6,8 +6,12 @@ import {
     CreateDateColumn,
     ManyToOne,
     JoinColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    OneToMany
   } from 'typeorm';
+import { Category } from './category.entity';
+import { ImagePost } from './images-post.etity';
+import { TypePost } from './type-post.entity';
 //   import { User } from 'src/user/entities';
   
   @Entity('posts')
@@ -36,9 +40,20 @@ import {
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
     updatedAt: Date;
   
-    //Relacion a tabla category
+  
     //relacion a muchas images
-    //relacion a types
+  
+
+    @ManyToOne(()=>TypePost, (typePost) => typePost.posts)//Muchos post , a un typo
+    @JoinColumn({name:'type_id'})
+    type : TypePost;
+
+    @ManyToOne(()=>Category, (category) => category.posts)//Muchos post , a un typo
+    @JoinColumn({name:'category_id'})
+    category : TypePost;
+
+    @OneToMany(()=>ImagePost,(imagePost) => imagePost.post)
+    images : ImagePost[]
 
     @ManyToOne(
      () => User,

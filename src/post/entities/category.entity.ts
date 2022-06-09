@@ -5,8 +5,10 @@ import {
     CreateDateColumn,
     ManyToOne,
     JoinColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    OneToMany
   } from 'typeorm';
+import { Post } from './post.entity';
 //   import { User } from 'src/user/entities';
   
   @Entity('category')
@@ -23,6 +25,8 @@ import {
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
     updatedAt: Date;
   
-    //Relacion a muchos post
+    @OneToMany(() => Post, (post) => post.category)//Un pais a muchas provincias
+    posts : Post[];
+    
   }
   

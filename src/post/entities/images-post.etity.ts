@@ -7,6 +7,7 @@ import {
     JoinColumn,
     UpdateDateColumn
   } from 'typeorm';
+import { Post } from './post.entity';
 //   import { User } from 'src/user/entities';
   
   @Entity('imagePost')
@@ -17,6 +18,10 @@ import {
     @Column({ type: 'varchar', length: 150 })
     name!: string;
   
+    @ManyToOne(()=>Post, (post) => post.images)
+    @JoinColumn({name:'post_id'})
+    post : Post
+
     @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
     createdAt: Date;
   

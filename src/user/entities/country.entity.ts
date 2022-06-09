@@ -5,14 +5,14 @@ import {
     CreateDateColumn,
     ManyToOne,
     JoinColumn,
-    UpdateDateColumn,
-    OneToMany
+    OneToMany,
+    UpdateDateColumn
   } from 'typeorm';
-import { Post } from './post.entity';
+import { Province } from './province.entity';
 //   import { User } from 'src/user/entities';
   
-  @Entity('typePost')
-  export class TypePost {
+  @Entity('country')
+  export class Country {
     @PrimaryGeneratedColumn()
     id: number;
   
@@ -24,9 +24,9 @@ import { Post } from './post.entity';
   
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
     updatedAt: Date;
-  
-    @OneToMany(() => Post, (post) => post.type)
-    posts : Post[];
-    
+
+    @OneToMany(() => Province, (province) => province.country)//Un pais a muchas provincias
+    provinces : Province[];
+ 
   }
   

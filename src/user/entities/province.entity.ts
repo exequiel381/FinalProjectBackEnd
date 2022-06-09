@@ -8,11 +8,12 @@ import {
     UpdateDateColumn,
     OneToMany
   } from 'typeorm';
-import { Post } from './post.entity';
+import { Country } from './country.entity';
+import { Locality } from './locality.entity';
 //   import { User } from 'src/user/entities';
   
-  @Entity('typePost')
-  export class TypePost {
+  @Entity('province')
+  export class Province {
     @PrimaryGeneratedColumn()
     id: number;
   
@@ -25,8 +26,12 @@ import { Post } from './post.entity';
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
     updatedAt: Date;
   
-    @OneToMany(() => Post, (post) => post.type)
-    posts : Post[];
+    @ManyToOne(()=>Country, (country) => country.provinces)//Muchas provincias , a un pais
+    @JoinColumn({name:'country_id'})
+    country : Country;
+
+    @OneToMany(() => Locality, (locality) => locality.province)
+    localities : Locality[];
     
   }
   
