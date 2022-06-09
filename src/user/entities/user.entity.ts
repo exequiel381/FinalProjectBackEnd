@@ -19,11 +19,17 @@ import {
     @Column({ type: 'varchar', length: 255, default: '', nullable: true })
     name: string;
   
-    @Column({ name: 'last_name', type: 'varchar', length: 255, default: '', nullable: true  })
+    @Column({ name: 'lastName', type: 'varchar', length: 255, default: '', nullable: true  })
     lastName: string;
+
+    @Column({ name: 'dni', type: 'varchar', length: 20, default: '', nullable: true  })
+    dni: string;
   
     @Column({ type: 'varchar', length: 255, nullable: false })
     email: string;
+
+    @Column({ type: 'varchar', length: 255, nullable: true })
+    profilePicture: string;
   
     @Column({ type: 'varchar', length: 128, nullable: false, select: false })
     password: string;
@@ -46,6 +52,7 @@ import {
       this.password = await hash(this.password, 10);
     }
   
+
      @OneToMany(
       _ => Post,
       post => post.author,

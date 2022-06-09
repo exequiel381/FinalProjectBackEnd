@@ -6,7 +6,7 @@ import { Post } from './entities';
 
 @Module({
   imports: [TypeOrmModule.forFeature([Post])],
-  controllers: [PostController],
+  controllers: [PostController],//definimos los controladores , para que sean instanciados
   providers: [PostService]
 })
 export class PostModule {}

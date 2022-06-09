@@ -3,7 +3,7 @@ import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 import { join } from 'path';
 
 function typeormModuleOptions(): TypeOrmModuleOptions {
-  return {
+  return {//Obtenemos todo el resto del .env (nombre el cual se lo pasamos en el appModule)
     type: 'mysql',
     host: process.env.DATABASE_HOST,
     port: parseInt(process.env.DATABASE_PORT, 10),
@@ -25,7 +25,7 @@ function typeormModuleOptions(): TypeOrmModuleOptions {
     },
   
     // Activar SOLO MANUALMENTE en DESARROLLO SI ES NECESARIO (DESACTIVAR EN PRODUCCION).
-    synchronize: false,
+    synchronize: true,
     logging: true,
     logger: 'file',
 

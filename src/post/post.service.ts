@@ -54,4 +54,6 @@ export class PostService {
     const post = await this.getById(id, author);
     return await this.postRepository.remove(post);
   }
+
+   
 }

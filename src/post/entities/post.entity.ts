@@ -19,19 +19,13 @@ import {
     slug!: string;
   
     @Column({ type: 'varchar', length: 150 })
-    title2!: string;
-  
-    @Column({ type: 'varchar', length: 255 })
-    excerpt?: string;
+    title!: string;
   
     @Column({ type: 'text' })
     content!: string;
   
-    @Column({ type: 'varchar', length: 100, nullable: true })
-    category: string;
-  
-    @Column({ type: 'simple-array' })
-    tags: string[];
+    // @Column({ type: 'varchar', length: 100, nullable: true })
+    // category: string;
   
     @Column({ type: 'bool', default: true })
     status: boolean;
@@ -42,6 +36,10 @@ import {
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
     updatedAt: Date;
   
+    //Relacion a tabla category
+    //relacion a muchas images
+    //relacion a types
+
     @ManyToOne(
      () => User,
       user => user.posts,
