@@ -10,6 +10,7 @@ import {
   } from 'typeorm';
   import { hash } from 'bcryptjs';
   import { Post } from 'src/post/entities';
+import { Reaction } from 'src/reaction/entities';
   
   @Entity('users')
   export class User {
@@ -43,6 +44,9 @@ import {
     @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
     createdAt: Date;
   
+    @OneToMany(() => Reaction, (reaction) => reaction.user)
+    reactions : Reaction[]
+
     @BeforeInsert()
     @BeforeUpdate()
     async hashPassword() {

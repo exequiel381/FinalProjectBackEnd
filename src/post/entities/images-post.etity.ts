@@ -27,7 +27,5 @@ import { Post } from './post.entity';
   
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
     updatedAt: Date;
-  
-    //Relacion a muchos post
   }
   

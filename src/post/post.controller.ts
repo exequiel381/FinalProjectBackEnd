@@ -16,7 +16,7 @@ import { CreatePostDto, EditPostDto } from './dtos';
 import { User, Auth } from 'src/common/decorators';
 import { User as UserEntity } from 'src/user/entities';
 
-@ApiTags('Posts')
+@ApiTags('Posts Routes')
 @Controller('post')
 export class PostController {
   constructor(
