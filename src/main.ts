@@ -19,7 +19,7 @@ async function bootstrap() {
 
   app.useGlobalPipes(
     new ValidationPipe({
-      whitelist: true,//esto no me permite revibir propiedades que no esten decoradas en nuestro dto.
+      whitelist: true,//esto no me permite recibir propiedades que no esten decoradas en nuestro dto.
     }),
   );
 

@@ -16,7 +16,7 @@ export class ReactionController {
   @ApiTags('Reactions Routes')  
   @Get()
   async getGretting() {
-    return  "Reaction Controller" ;
+    return  "Hello I am Reaction Controller" ;
   }
 
 }

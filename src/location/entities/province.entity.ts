@@ -20,6 +20,9 @@ import { Locality } from './locality.entity';
     @Column({ type: 'varchar', length: 150 })
     name!: string;
   
+    @Column({ type: 'varchar', length: 10 })
+    ISO!: string;
+  
     @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
     createdAt: Date;
   

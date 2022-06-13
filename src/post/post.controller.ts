@@ -48,7 +48,6 @@ export class PostController {
     const data = await this.postService.createOne(dto, author);
     return { message: 'Post created', data };
   }
-
   @Auth({
     resource: AppResource.POST,
     action: 'update',
@@ -83,7 +82,6 @@ export class PostController {
   @Delete(':id')
   async deleteOne(@Param('id') id: number, @User() author: UserEntity) {
     let data;
-
     if (
       this.roleBuilder.can(author.roles).deleteAny(AppResource.POST).granted
     ) {

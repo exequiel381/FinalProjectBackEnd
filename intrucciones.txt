@@ -33,4 +33,5 @@ Auth
 Migraciones
 
 1 - desactivamos el synchronize - si queremos que se cambie solo , lo dejamos
+2 - npm run build --compila
 2 - npm run db:migration:generate nombre //estos comandos los definimos en packaje.json

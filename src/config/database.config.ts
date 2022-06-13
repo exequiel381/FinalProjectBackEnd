@@ -25,7 +25,7 @@ function typeormModuleOptions(): TypeOrmModuleOptions {
     },
   
     // Activar SOLO MANUALMENTE en DESARROLLO SI ES NECESARIO (DESACTIVAR EN PRODUCCION).
-    synchronize: true,
+    synchronize: false,
     logging: true,
     logger: 'file',
 

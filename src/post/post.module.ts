@@ -3,7 +3,7 @@ import { PostController } from './post.controller';
 import { PostService } from './post.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { Category, Post } from './entities';
-import { ImagePost } from './entities/images-post.etity';
+import { ImagePost } from './entities/images-post.entity';
 import { TypePost } from './entities/type-post.entity';
 
 @Module({

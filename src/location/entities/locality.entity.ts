@@ -18,7 +18,12 @@ import { Province } from './province.entity';
   
     @Column({ type: 'varchar', length: 150 })
     name!: string;
+
   
+    @Column({ type: 'int'})
+    postalCode!: number;
+  
+
     @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
     createdAt: Date;
   

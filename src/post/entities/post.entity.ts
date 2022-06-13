@@ -11,7 +11,7 @@ import {
     OneToMany
   } from 'typeorm';
 import { Category } from './category.entity';
-import { ImagePost } from './images-post.etity';
+import { ImagePost } from './images-post.entity';
 import { TypePost } from './type-post.entity';
   
   @Entity('posts')
