@@ -7,10 +7,13 @@ import {
     Entity,
     OneToOne,
     OneToMany,
+    ManyToOne,
+    JoinColumn,
   } from 'typeorm';
   import { hash } from 'bcryptjs';
   import { Post } from 'src/post/entities';
 import { Reaction } from 'src/reaction/entities';
+import { Locality } from 'src/location/entities/locality.entity';
   
   @Entity('users')
   export class User {
@@ -56,6 +59,9 @@ import { Reaction } from 'src/reaction/entities';
       this.password = await hash(this.password, 10);
     }
   
+    @ManyToOne(()=>Locality,(locality) => locality.users)
+    @JoinColumn({name:'locality_id'})
+    locality : Locality
 
      @OneToMany(
       _ => Post,

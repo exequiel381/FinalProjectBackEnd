@@ -1,3 +1,4 @@
+import { User } from 'src/user/entities';
 import {
     Entity,
     PrimaryGeneratedColumn,
@@ -5,7 +6,8 @@ import {
     CreateDateColumn,
     ManyToOne,
     JoinColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    OneToMany
   } from 'typeorm';
 import { Country } from './country.entity';
 import { Province } from './province.entity';
@@ -33,6 +35,9 @@ import { Province } from './province.entity';
     @ManyToOne(()=>Province, (province) => province.localities)
     @JoinColumn({name:'province_id'})
     province : Province;
+
+    @OneToMany(()=>User, (user) => user.locality)
+    users : User[]
     
   }
   

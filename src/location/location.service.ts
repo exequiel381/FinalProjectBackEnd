@@ -36,9 +36,11 @@ export class LocationService {
 
       async getProvinceLocalities(provinceId : number) {
         return await this.localityRepository
-        .createQueryBuilder("locality")
-        .where("locality.province_id = :id",{id : provinceId})
-        .getMany();
+        .find({
+          where :{
+            province : provinceId,
+          }
+        })
       }
 
 }
