@@ -32,6 +32,13 @@ export class PostController {
     return { data };
   }
 
+  @Auth()
+  @Get('/postbyuser')
+  async getPostByUser(@User() author: UserEntity) {
+    const data = await this.postService.getPostByUser(author);
+    return { data };
+  }
+
   @Get(':id')
   async getById(@Param('id', ParseIntPipe) id: number) {
     const data = await this.postService.getById(id);
