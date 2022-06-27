@@ -7,6 +7,9 @@ import {
   Delete,
   Body,
   ParseIntPipe,
+  UseInterceptors,
+  UploadedFile,
+  UploadedFiles,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { InjectRolesBuilder, RolesBuilder } from 'nest-access-control';
@@ -15,10 +18,15 @@ import { PostService } from './post.service';
 import { CreatePostDto, EditPostDto } from './dtos';
 import { User, Auth } from 'src/common/decorators';
 import { User as UserEntity } from 'src/user/entities';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { RenameImage } from 'src/images/images.helper';
+
 
 @ApiTags('Posts Routes')
 @Controller('post')
 export class PostController {
+
   constructor(
     private readonly postService: PostService,
     @InjectRolesBuilder()
@@ -97,5 +105,28 @@ export class PostController {
       data = await this.postService.deleteOne(id, author);
     }
     return { message: 'Post deleted', data };
+  }
+
+   @Post('testUpload')//Funcionando para subir una imagen
+   @UseInterceptors(FileInterceptor('file',{
+    storage : diskStorage({
+      destination : './upload',
+      filename : RenameImage,
+    })
+   }))
+   testUpload(@UploadedFile() file : Express.Multer.File){
+    console.log(file);
+   }
+
+
+  @Post('testUploadArray')
+  @UseInterceptors(FilesInterceptor('files',5,{
+    storage : diskStorage({
+      destination : './upload',
+      filename : RenameImage,
+    })
+  }))
+  uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
+    console.log(files);
   }
 }

@@ -17,6 +17,7 @@ async function bootstrap() {
   setDefaultUser(config);
   generateTypeormConfigFile(config);
 
+  app.enableCors();
   app.useGlobalPipes(
     new ValidationPipe({
       whitelist: true,//esto no me permite recibir propiedades que no esten decoradas en nuestro dto.
