@@ -119,14 +119,16 @@ export class PostController {
    }
 
 
-  @Post('testUploadArray')
+   //Subir 5 imagenes y un id de post
+  @Post('testUploadArray/:id')
   @UseInterceptors(FilesInterceptor('files',5,{
     storage : diskStorage({
       destination : './upload',
       filename : RenameImage,
     })
   }))
-  uploadFile(@UploadedFiles() files: Array<Express.Multer.File>) {
+  uploadFile(@Param('id') id: number,@UploadedFiles() files: Array<Express.Multer.File>) {
     console.log(files);
+    console.log(id);
   }
 }
