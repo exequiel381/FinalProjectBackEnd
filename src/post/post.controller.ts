@@ -7,6 +7,9 @@ import {
   Delete,
   Body,
   ParseIntPipe,
+  UseInterceptors,
+  UploadedFile,
+  UploadedFiles,
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { InjectRolesBuilder, RolesBuilder } from 'nest-access-control';
@@ -15,10 +18,15 @@ import { PostService } from './post.service';
 import { CreatePostDto, EditPostDto } from './dtos';
 import { User, Auth } from 'src/common/decorators';
 import { User as UserEntity } from 'src/user/entities';
+import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
+import { diskStorage } from 'multer';
+import { RenameImage } from 'src/images/images.helper';
 
-@ApiTags('Posts')
+
+@ApiTags('Posts Routes')
 @Controller('post')
 export class PostController {
+
   constructor(
     private readonly postService: PostService,
     @InjectRolesBuilder()
@@ -29,6 +37,13 @@ export class PostController {
   @Get()
   async getMany() {
     const data = await this.postService.getMany();
+    return { data };
+  }
+
+  @Auth()
+  @Get('/postbyuser')
+  async getPostByUser(@User() author: UserEntity) {
+    const data = await this.postService.getPostByUser(author);
     return { data };
   }
 
@@ -48,7 +63,6 @@ export class PostController {
     const data = await this.postService.createOne(dto, author);
     return { message: 'Post created', data };
   }
-
   @Auth({
     resource: AppResource.POST,
     action: 'update',
@@ -83,7 +97,6 @@ export class PostController {
   @Delete(':id')
   async deleteOne(@Param('id') id: number, @User() author: UserEntity) {
     let data;
-
     if (
       this.roleBuilder.can(author.roles).deleteAny(AppResource.POST).granted
     ) {
@@ -92,5 +105,30 @@ export class PostController {
       data = await this.postService.deleteOne(id, author);
     }
     return { message: 'Post deleted', data };
+  }
+
+   @Post('testUpload')//Funcionando para subir una imagen
+   @UseInterceptors(FileInterceptor('file',{
+    storage : diskStorage({
+      destination : './upload',
+      filename : RenameImage,
+    })
+   }))
+   testUpload(@UploadedFile() file : Express.Multer.File){
+    console.log(file);
+   }
+
+
+   //Subir 5 imagenes y un id de post
+  @Post('testUploadArray/:id')
+  @UseInterceptors(FilesInterceptor('files',5,{
+    storage : diskStorage({
+      destination : './upload',
+      filename : RenameImage,
+    })
+  }))
+  uploadFile(@Param('id') id: number,@UploadedFiles() files: Array<Express.Multer.File>) {
+    console.log(files);
+    console.log(id);
   }
 }

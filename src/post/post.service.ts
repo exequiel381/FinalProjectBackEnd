@@ -1,11 +1,9 @@
 import { Injectable, NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
-
 import { Post } from './entities';
 import { CreatePostDto, EditPostDto } from './dtos';
 import { User } from 'src/user/entities';
-// import { User } from 'src/user/entities';
 
 @Injectable()
 export class PostService {
@@ -18,13 +16,6 @@ export class PostService {
     return await this.postRepository.find();
   }
 
-  // async getById(id : number){
-  //   const post = await this.postRepository.findOne(id);
-  //   if (!post)
-  //     throw new NotFoundException('Post does not exist or unauthorized');
-  //   return post;
-  // }
-
   async getById(id: number, author?: User) {
     const post = await this.postRepository
       .findOne(id)
@@ -34,10 +25,14 @@ export class PostService {
     return post;
   }
 
-// async createOne(dto: CreatePostDto) {
-//   const post = this.postRepository.create({ ...dto});
-//   return await this.postRepository.save(post);
-// }
+  async getPostByUser(user?: User) {
+    return await this.postRepository
+        .find({
+          where :{
+            author : user,
+          }
+        })
+  }
 
   async createOne(dto: CreatePostDto, author: User) {
     const post = this.postRepository.create({ ...dto, author });

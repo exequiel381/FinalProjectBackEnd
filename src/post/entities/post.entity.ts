@@ -1,3 +1,4 @@
+import { Reaction } from 'src/reaction/entities';
 import { User } from 'src/user/entities';
 import {
     Entity,
@@ -6,27 +7,24 @@ import {
     CreateDateColumn,
     ManyToOne,
     JoinColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    OneToMany
   } from 'typeorm';
-//   import { User } from 'src/user/entities';
+import { Category } from './category.entity';
+import { ImagePost } from './images-post.entity';
+import { TypePost } from './type-post.entity';
   
   @Entity('posts')
   export class Post {
     @PrimaryGeneratedColumn()
     id: number;
   
-    @Column({ type: 'text', nullable: false })
-    slug!: string;
-  
     @Column({ type: 'varchar', length: 150 })
     title!: string;
   
     @Column({ type: 'text' })
     content!: string;
-  
-    // @Column({ type: 'varchar', length: 100, nullable: true })
-    // category: string;
-  
+
     @Column({ type: 'bool', default: true })
     status: boolean;
   
@@ -36,9 +34,20 @@ import {
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
     updatedAt: Date;
   
-    //Relacion a tabla category
-    //relacion a muchas images
-    //relacion a types
+
+    @ManyToOne(()=>TypePost, (typePost) => typePost.posts)//Muchos post , a un typo
+    @JoinColumn({name:'type_id'})
+    type? : TypePost;
+
+    @ManyToOne(()=>Category, (category) => category.posts)//Muchos post , a un typo
+    @JoinColumn({name:'category_id'})
+    category? : TypePost;
+
+    @OneToMany(()=>ImagePost,(imagePost) => imagePost.post)
+    images : ImagePost[]
+
+    @OneToMany(() => Reaction, (reaction) => reaction.post)
+    reactions : Reaction[]
 
     @ManyToOne(
      () => User,

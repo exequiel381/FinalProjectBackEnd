@@ -33,4 +33,18 @@ Auth
 Migraciones
 
 1 - desactivamos el synchronize - si queremos que se cambie solo , lo dejamos
-2 - npm run db:migration:generate nombre //estos comandos los definimos en packaje.json
+2 - npm run build --compila
+3 - npm run db:migration:generate nombre //estos comandos los definimos en packaje.json
+
+
+.env Utilizado
+
+PORT=3000
+JWT_SECRET=myStrongSecret
+DATABASE_HOST=localhost
+DATABASE_PORT=3306
+DATABASE_USERNAME=root
+DATABASE_PASSWORD=bgnyvxpg
+DATABASE_NAME=finalprojectdb
+DEFAULT_USER_EMAIL=exequiel@gmail.com
+DEFAULT_USER_PASSWORD=bgnyvxpg
