@@ -24,7 +24,8 @@ import databaseConfig from './config/database.config';
     }),
     ConfigModule.forRoot({
       isGlobal: true,
-      load: [databaseConfig],
+      //load: [databaseConfig],
+      load: [],
       envFilePath: ".env",//`.env.${process.env.NODE_ENV || 'development'}`, // .env.development
       validationSchema: Joi.object({ 
         NODE_ENV: Joi.string()
