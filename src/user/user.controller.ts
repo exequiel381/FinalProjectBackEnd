@@ -33,6 +33,8 @@ import { Auth, User } from 'src/common/decorators';
   
     @Post('register')
     async publicRegistration(@Body() dto: UserRegistrationDto) {
+      
+      console.log(dto);
       const data = await this.userService.createOne({
         ...dto,
         roles: [AppRoles.AUTHOR],

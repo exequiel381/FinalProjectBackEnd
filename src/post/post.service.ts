@@ -4,6 +4,7 @@ import { Repository } from 'typeorm';
 import { Post } from './entities';
 import { CreatePostDto, EditPostDto } from './dtos';
 import { User } from 'src/user/entities';
+import { ImagePost } from './entities/images-post.entity';
 
 @Injectable()
 export class PostService {
@@ -35,7 +36,7 @@ export class PostService {
   }
 
   async createOne(dto: CreatePostDto, author: User) {
-    const post = this.postRepository.create({ ...dto, author });
+    let post = this.postRepository.create({ ...dto, author });
     return await this.postRepository.save(post);
   }
 

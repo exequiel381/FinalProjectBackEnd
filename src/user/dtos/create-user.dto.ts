@@ -6,11 +6,15 @@ import {
     IsOptional,
     IsArray,
     IsEnum,
+    IsInt,
+    IsNumber,
+    IsNotEmpty,
   } from 'class-validator';
 import { AppRoles } from 'src/app.roles';
 //   import { AppRoles } from 'src/app.roles';
   import { EnumToString } from 'src/common/helpers/enumToString';
-  
+import { localityDto } from 'src/location/dtos/localityDto.dto';
+
   export class CreateUserDto {
     @IsOptional()
     @IsString()
@@ -29,7 +33,10 @@ import { AppRoles } from 'src/app.roles';
     @MinLength(8)
     @MaxLength(128)
     password: string;
-  
+
+    @IsNotEmpty()
+    locality : localityDto
+
     @IsArray()
     @IsEnum(AppRoles, {
       each: true,

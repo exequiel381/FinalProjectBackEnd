@@ -53,16 +53,35 @@ export class PostController {
     return { data };
   }
 
-  @Auth({
-    resource: AppResource.POST,
-    action: 'create',
-    possession: 'own',
-  })
+  // @Auth({
+  //   resource: AppResource.POST,
+  //   action: 'create',
+  //   possession: 'own',
+  // })
   @Post()
   async createPost(@Body() dto: CreatePostDto, @User() author: UserEntity) {
     const data = await this.postService.createOne(dto, author);
     return { message: 'Post created', data };
   }
+
+  // @Auth({
+  //   resource: AppResource.POST,
+  //   action: 'create',
+  //   possession: 'own',
+  // })
+  @Post('newpostwithimages')
+  @UseInterceptors(FilesInterceptor('files',5,{
+    storage : diskStorage({
+      destination : '../post/images',
+      filename : RenameImage,
+    })
+  }))
+  async createPostWithImages(@Body() CreatePostDto:  CreatePostDto,@UploadedFiles() files: Array<Express.Multer.File>) {
+    console.log(CreatePostDto);
+    console.log(files);
+  }
+
+
   @Auth({
     resource: AppResource.POST,
     action: 'update',
@@ -107,6 +126,9 @@ export class PostController {
     return { message: 'Post deleted', data };
   }
 
+
+
+  /*Ejemplos de subida de archivos 
    @Post('testUpload')//Funcionando para subir una imagen
    @UseInterceptors(FileInterceptor('file',{
     storage : diskStorage({
@@ -127,8 +149,9 @@ export class PostController {
       filename : RenameImage,
     })
   }))
-  uploadFile(@Param('id') id: number,@UploadedFiles() files: Array<Express.Multer.File>) {
+  uploadFile(@Param('id') id: number,@UploadedFiles() files: Array<Express.Multer.File>,@Body() CreatePostDto:  CreatePostDto) {
     console.log(files);
     console.log(id);
-  }
+    console.log(CreatePostDto);
+  }*/
 }
