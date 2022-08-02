@@ -21,6 +21,7 @@ import { User as UserEntity } from 'src/user/entities';
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { RenameImage } from 'src/images/images.helper';
+import { ImagePost } from './entities/images-post.entity';
 
 
 @ApiTags('Posts Routes')
@@ -64,21 +65,27 @@ export class PostController {
     return { message: 'Post created', data };
   }
 
-  // @Auth({
-  //   resource: AppResource.POST,
-  //   action: 'create',
-  //   possession: 'own',
-  // })
+  @Auth({
+    resource: AppResource.POST,
+    action: 'create',
+    possession: 'own',
+  })
   @Post('newpostwithimages')
   @UseInterceptors(FilesInterceptor('files',5,{
     storage : diskStorage({
-      destination : '../post/images',
+      destination : './upload',
       filename : RenameImage,
     })
   }))
-  async createPostWithImages(@Body() CreatePostDto:  CreatePostDto,@UploadedFiles() files: Array<Express.Multer.File>) {
-    console.log(CreatePostDto);
-    console.log(files);
+  async createPostWithImages(@Body() CreatePostDto:  CreatePostDto,@UploadedFiles() files: Array<Express.Multer.File>,@User() author: UserEntity) {
+    let images = files?.map((file)=>{
+       let image = new ImagePost();
+       image.name = file.filename;
+       return image;
+    })
+    CreatePostDto["images"] = images;
+    const data = await this.postService.createOne(CreatePostDto, author);
+    return { message: 'Post created', data };
   }
 
 
@@ -139,19 +146,5 @@ export class PostController {
    testUpload(@UploadedFile() file : Express.Multer.File){
     console.log(file);
    }
-
-
-   //Subir 5 imagenes y un id de post
-  @Post('testUploadArray/:id')
-  @UseInterceptors(FilesInterceptor('files',5,{
-    storage : diskStorage({
-      destination : './upload',
-      filename : RenameImage,
-    })
-  }))
-  uploadFile(@Param('id') id: number,@UploadedFiles() files: Array<Express.Multer.File>,@Body() CreatePostDto:  CreatePostDto) {
-    console.log(files);
-    console.log(id);
-    console.log(CreatePostDto);
-  }*/
+}*/
 }

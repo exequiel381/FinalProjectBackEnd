@@ -43,7 +43,9 @@ import { TypePost } from './type-post.entity';
     @JoinColumn({name:'category_id'})
     category? : TypePost;
 
-    @OneToMany(()=>ImagePost,(imagePost) => imagePost.post)
+    @OneToMany(()=>ImagePost,(imagePost) => imagePost.post,{
+      cascade:true,
+    })
     images : ImagePost[]
 
     @OneToMany(() => Reaction, (reaction) => reaction.post)

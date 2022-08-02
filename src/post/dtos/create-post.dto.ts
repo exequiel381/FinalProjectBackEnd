@@ -5,6 +5,7 @@ import {
   IsEnum,
   IsArray,
   IsOptional,
+  IsNumber,
 } from 'class-validator';
 import { EnumToString } from '../../common/helpers/enumToString';
 import { PostCategory } from '../enums';
@@ -17,10 +18,10 @@ export class CreatePostDto {
   content: string;
 
   @IsString()
-  type_id: string;
+  type_id: number;
   
   @IsString()
-  category_id: string;
+  category_id: number;
   
   // @IsOptional()
   // @IsBoolean()
