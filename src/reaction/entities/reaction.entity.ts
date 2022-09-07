@@ -25,7 +25,7 @@ import {
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
     updatedAt: Date;
   
-    @ManyToOne(() => User, (user) => user.reactions)
+    @ManyToOne(() => User, (user) => user.reactions, {eager:true})
     @JoinColumn({name:'user_id'})
     user: User
 

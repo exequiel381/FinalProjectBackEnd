@@ -49,7 +49,7 @@ export class PostController {
   }
 
   @Get(':id')
-  async getById(@Param('id', ParseIntPipe) id: number) {
+  async getById(@Param('id', ParseIntPipe) id: number){
     const data = await this.postService.getById(id);
     return { data };
   }

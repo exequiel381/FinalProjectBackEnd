@@ -48,7 +48,7 @@ import { TypePost } from './type-post.entity';
     })
     images : ImagePost[]
 
-    @OneToMany(() => Reaction, (reaction) => reaction.post)
+    @OneToMany(() => Reaction, (reaction) => reaction.post,{ eager: true })
     reactions : Reaction[]
 
     @ManyToOne(

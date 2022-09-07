@@ -14,6 +14,7 @@ import {
   import { Post } from 'src/post/entities';
 import { Reaction } from 'src/reaction/entities';
 import { Locality } from 'src/location/entities/locality.entity';
+import { Exclude } from 'class-transformer';
   
   @Entity('users')
   export class User {
@@ -44,7 +45,10 @@ import { Locality } from 'src/location/entities/locality.entity';
     @Column({ type: 'bool', default: true })
     status: boolean;
   
-    @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
+    // con select: false no me trae el atributo cuando lo busco para poder devolver sin tener que hacer DTO
+    //Tambien puedo usar el decorador @Exclude(), para que solo no lo serializa cuando devuelve el dato
+    // @Exclude()
+    @CreateDateColumn({ name: 'created_at', type: 'timestamp',select: false })
     createdAt: Date;
   
     @OneToMany(() => Reaction, (reaction) => reaction.user)
