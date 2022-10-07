@@ -8,9 +8,11 @@ import {
     ManyToOne,
     JoinColumn,
     UpdateDateColumn,
-    OneToMany
+    OneToMany,
+    OneToOne
   } from 'typeorm';
-import { LineReaction } from './LineReaction.entity';
+import { Certificate } from './certificate.entity';
+import { LineReaction } from './lineReaction.entity';
 //   import { User } from 'src/user/entities';
   
   @Entity('reaction')
@@ -40,5 +42,7 @@ import { LineReaction } from './LineReaction.entity';
     })
     lines : LineReaction[]
 
+    @OneToOne(() => Certificate, (certificate) => certificate.LineReaction)
+    certificate : Certificate
   }
   

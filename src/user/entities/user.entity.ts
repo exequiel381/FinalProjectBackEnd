@@ -15,6 +15,7 @@ import {
 import { Reaction } from 'src/reaction/entities';
 import { Locality } from 'src/location/entities/locality.entity';
 import { Exclude } from 'class-transformer';
+import { Calification } from './calification.entity';
   
   @Entity('users')
   export class User {
@@ -53,6 +54,12 @@ import { Exclude } from 'class-transformer';
   
     @OneToMany(() => Reaction, (reaction) => reaction.user)
     reactions : Reaction[]
+
+    @OneToMany(() => Calification, (calification) => calification.creatorUser)
+    myCalifications : Calification[]
+
+    @OneToMany(() => Calification, (calification) => calification.calificatedUser)
+    aboutMeCalifications : Calification[]
 
     @BeforeInsert()
     @BeforeUpdate()

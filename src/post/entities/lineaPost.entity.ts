@@ -1,4 +1,4 @@
-import { LineReaction } from 'src/reaction/entities/LineReaction.entity';
+import { LineReaction } from 'src/reaction/entities/lineReaction.entity';
 import {
     Entity,
     PrimaryGeneratedColumn,

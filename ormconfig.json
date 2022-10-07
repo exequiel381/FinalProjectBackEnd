@@ -9,7 +9,7 @@
     "D:\\Unidad Exe\\Programacion\\Codigos\\NestJs\\finalproject\\dist\\**\\**\\*entity{.ts,.js}"
   ],
   "autoLoadEntities": true,
-  "migrationsRun": true,
+  "migrationsRun": false,
   "migrations": [
     "D:\\Unidad Exe\\Programacion\\Codigos\\NestJs\\finalproject\\dist\\migration\\**\\*{.ts,.js}"
   ],
