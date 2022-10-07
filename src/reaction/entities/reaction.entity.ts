@@ -7,8 +7,10 @@ import {
     CreateDateColumn,
     ManyToOne,
     JoinColumn,
-    UpdateDateColumn
+    UpdateDateColumn,
+    OneToMany
   } from 'typeorm';
+import { LineReaction } from './LineReaction.entity';
 //   import { User } from 'src/user/entities';
   
   @Entity('reaction')
@@ -33,5 +35,10 @@ import {
     @JoinColumn({name:'post_id'})
     post: Post
     
+    @OneToMany(()=>LineReaction,(lineaReaccion) => lineaReaccion.reaction,{
+      cascade:true,
+    })
+    lines : LineReaction[]
+
   }
   

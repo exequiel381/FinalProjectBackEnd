@@ -5,9 +5,10 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { Reaction } from './entities/reaction.entity';
 import { Post } from 'src/post/entities';
 import { User } from 'src/user/entities';
+import { LineReaction } from './entities/LineReaction.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Reaction,Post,User])],
+  imports: [TypeOrmModule.forFeature([Reaction,Post,User,LineReaction])],
   providers: [ReactionService],
   controllers: [ReactionController]
 })
