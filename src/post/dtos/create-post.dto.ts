@@ -1,14 +1,12 @@
 import {
   IsNotEmpty,
   IsString,
-  IsBoolean,
-  IsEnum,
   IsArray,
-  IsOptional,
-  IsNumber,
+ 
 } from 'class-validator';
-import { EnumToString } from '../../common/helpers/enumToString';
-import { PostCategory } from '../enums';
+import { CategoryDto } from './category-post.dto';
+import { LinePostDto } from './line-post.dto';
+import { TypePostDto } from './type-post.dto';
 
 export class CreatePostDto {
   @IsString()
@@ -17,21 +15,14 @@ export class CreatePostDto {
   @IsString()
   content: string;
 
-  @IsString()
-  type_id: number;
+  @IsNotEmpty()
+  type: TypePostDto;
   
-  @IsString()
-  category_id: number;
+  @IsNotEmpty()
+  category: CategoryDto;
   
-  // @IsOptional()
-  // @IsBoolean()
-  // status: boolean;
+  @IsArray()
+  LinesPostDto : LinePostDto[];
   
-  // @IsNotEmpty() // EJEMPLO AL RECIBIR UN ENUM
-  // @IsEnum(PostCategory, {
-  //   message: `Invalid option. Valids options are ${EnumToString(PostCategory)}`,
-  // })
-  // category: string;
 
- 
 }

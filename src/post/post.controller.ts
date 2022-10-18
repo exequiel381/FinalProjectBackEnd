@@ -54,11 +54,11 @@ export class PostController {
     return { data };
   }
 
-  // @Auth({
-  //   resource: AppResource.POST,
-  //   action: 'create',
-  //   possession: 'own',
-  // })
+  @Auth({
+    resource: AppResource.POST,
+    action: 'create',
+    possession: 'own',
+  })
   @Post()
   async createPost(@Body() dto: CreatePostDto, @User() author: UserEntity) {
     const data = await this.postService.createOne(dto, author);

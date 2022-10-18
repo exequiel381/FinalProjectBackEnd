@@ -15,6 +15,12 @@ import { Post } from './post.entity';
   
   @Entity('lineaPost')
   export class LineaPost {
+
+    constructor(description : string,cantidad : number) {
+      this.descripcion = description;
+      this.cantidad = cantidad;
+    }
+
     @PrimaryGeneratedColumn()
     id: number;
   
