@@ -13,6 +13,8 @@ export class PostService {
   constructor(
     @InjectRepository(Post)
     private readonly postRepository: Repository<Post>,
+    @InjectRepository(LineaPost)
+    private readonly linePostRepository: Repository<LineaPost>,
     
   ) {}
 
@@ -24,6 +26,12 @@ export class PostService {
     const post = await this.postRepository
       .findOne(id)
       .then(p => (!author ? p : !!p && author.id === p.author.id ? p : null));
+    let linesPost = await this.linePostRepository.find({
+      where :{
+        post : post, 
+      }
+    })
+    post.lines = linesPost;
     if (!post)
       throw new NotFoundException('Post does not exist or unauthorized');
     return post;
@@ -40,7 +48,6 @@ export class PostService {
 
   async createOne(dto: CreatePostDto, author: User) {
     let post = this.postRepository.create({ ...dto, author });
-
     let lines = [];
     dto.LinesPostDto.forEach(element => {
       lines.push(new LineaPost(element.description,element.cantidad))
