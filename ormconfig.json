@@ -3,15 +3,15 @@
   "host": "localhost",
   "port": 3306,
   "username": "root",
-  "password": "bgnyvxpg",
+  "password": "123456",
   "database": "finalprojectdb",
   "entities": [
-    "D:\\Unidad Exe\\Programacion\\Codigos\\NestJs\\finalproject\\dist\\**\\**\\*entity{.ts,.js}"
+    "D:\\Facultad 2022\\Proyecto Final\\donarg-back\\FinalProject\\dist\\**\\**\\*entity{.ts,.js}"
   ],
   "autoLoadEntities": true,
   "migrationsRun": false,
   "migrations": [
-    "D:\\Unidad Exe\\Programacion\\Codigos\\NestJs\\finalproject\\dist\\migration\\**\\*{.ts,.js}"
+    "D:\\Facultad 2022\\Proyecto Final\\donarg-back\\FinalProject\\dist\\migration\\**\\*{.ts,.js}"
   ],
   "migrationsTableName": "migrations_typeorm",
   "cli": {
