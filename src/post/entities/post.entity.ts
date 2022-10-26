@@ -1,4 +1,5 @@
 import { Reaction } from 'src/reaction/entities';
+import { LineReaction } from 'src/reaction/entities/lineReaction.entity';
 import { User } from 'src/user/entities';
 import {
     Entity,
@@ -14,6 +15,7 @@ import { Category } from './category.entity';
 import { ImagePost } from './images-post.entity';
 import { LineaPost } from './lineaPost.entity';
 import { TypePost } from './type-post.entity';
+import { NotFoundException } from '@nestjs/common';
   
   @Entity('posts')
   export class Post {
@@ -46,6 +48,7 @@ import { TypePost } from './type-post.entity';
 
     @OneToMany(()=>ImagePost,(imagePost) => imagePost.post,{
       cascade:true,
+      eager:true
     })
     images : ImagePost[]
 
@@ -54,7 +57,7 @@ import { TypePost } from './type-post.entity';
     })
     lines : LineaPost[]
 
-    @OneToMany(() => Reaction, (reaction) => reaction.post,{ eager: true })
+    @OneToMany(() => Reaction, (reaction) => reaction.post,{ eager: false })
     reactions : Reaction[]
 
     @ManyToOne(
@@ -64,5 +67,12 @@ import { TypePost } from './type-post.entity';
     )
     @JoinColumn({ name: 'author' })
     author: User;
+
+    public createReactionLine(idLinePost : number,requestQuantity : number) : LineReaction{
+      let LinePost = this.lines.find(l => l.id === idLinePost);
+      if(LinePost === null ) throw new NotFoundException('Una de las lineas indicadas no pertenece al post');
+      if(LinePost.cantidad < requestQuantity) throw new NotFoundException('No puedes solicitar u ofrecer mas productos de lo publicado');
+      return new LineReaction(LinePost,requestQuantity);
+    } 
   }
   

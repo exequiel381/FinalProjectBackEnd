@@ -34,7 +34,7 @@ export class PostController {
     private readonly roleBuilder: RolesBuilder,
   ) {}
 
-  @Auth()
+  //@Auth()
   @Get()
   async getMany() {
     const data = await this.postService.getMany();
@@ -61,8 +61,10 @@ export class PostController {
   })
   @Post()
   async createPost(@Body() dto: CreatePostDto, @User() author: UserEntity) {
-    const data = await this.postService.createOne(dto, author);
-    return { message: 'Post created', data };
+    if(author !== null){
+      const data = await this.postService.createOne(dto, author);
+      return { message: 'Post created', data };
+    }else return { message: 'No se encontro el usuario' };
   }
 
   @Auth({
@@ -78,6 +80,7 @@ export class PostController {
     })
   }))
   async createPostWithImages(@Body() CreatePostDto:  CreatePostDto,@UploadedFiles() files: Array<Express.Multer.File>,@User() author: UserEntity) {
+    if(author !== null){
     let images = files?.map((file)=>{
        let image = new ImagePost();
        image.name = file.filename;
@@ -86,6 +89,7 @@ export class PostController {
     CreatePostDto["images"] = images;
     const data = await this.postService.createOne(CreatePostDto, author);
     return { message: 'Post created', data };
+    }else return { message: 'No se encontro el usuario' };
   }
 
 

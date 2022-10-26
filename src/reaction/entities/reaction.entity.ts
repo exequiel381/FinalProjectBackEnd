@@ -1,3 +1,5 @@
+import { IsEnum } from 'class-validator';
+import { EnumToString } from 'src/common/helpers/enumToString';
 import { Post } from 'src/post/entities';
 import { User } from 'src/user/entities';
 import {
@@ -14,7 +16,13 @@ import {
 import { Certificate } from './certificate.entity';
 import { LineReaction } from './lineReaction.entity';
 //   import { User } from 'src/user/entities';
-  
+
+export enum ReactionStates {
+  ACEPTED = 'ACEPTADO',
+  REJECTED = 'RECHAZADO',
+  CREATED = 'CREADO'
+}
+
   @Entity('reaction')
   export class Reaction {
     @PrimaryGeneratedColumn()
@@ -44,5 +52,12 @@ import { LineReaction } from './lineReaction.entity';
 
     @OneToOne(() => Certificate, (certificate) => certificate.LineReaction)
     certificate : Certificate
+
+    
+    // @IsEnum(ReactionStates, {
+    //   each: true,
+    //   message: `El estado debe ser un Enum, ${EnumToString(ReactionStates)}`,
+    // })
+    // state: string;
   }
   

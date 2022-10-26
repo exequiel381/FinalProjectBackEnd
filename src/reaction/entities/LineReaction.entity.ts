@@ -15,9 +15,15 @@ import { Reaction } from './reaction.entity';
   
   @Entity('lineaReaccion')
   export class LineReaction {
+
+    constructor(LinePost : LineaPost, requestQuantity : number){
+      this.cantidad = requestQuantity;
+      this.lineaPost = LinePost;
+    }
+
     @PrimaryGeneratedColumn()
     id: number;
-  
+    
     @Column({ type: 'int' })
     cantidad!: number;
   
@@ -31,7 +37,7 @@ import { Reaction } from './reaction.entity';
     @JoinColumn({name:'reaction_id'})
     reaction : Reaction
     
-    @OneToOne(()=> LineaPost)
+    @ManyToOne(()=> LineaPost)
     @JoinColumn({name: 'LineaPost_id'})
     lineaPost : LineaPost
   }

@@ -7,9 +7,10 @@ import { Post } from 'src/post/entities';
 import { User } from 'src/user/entities';
 import { LineReaction } from './entities/lineReaction.entity';
 import { Certificate } from './entities/certificate.entity';
+import { LineaPost } from 'src/post/entities/lineaPost.entity';
 
 @Module({
-  imports: [TypeOrmModule.forFeature([Reaction,Post,User,LineReaction,Certificate])],
+  imports: [TypeOrmModule.forFeature([Reaction,Post,User,LineReaction,Certificate,LineaPost])],
   providers: [ReactionService],
   controllers: [ReactionController]
 })

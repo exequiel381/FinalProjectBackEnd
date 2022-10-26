@@ -11,6 +11,7 @@ import {
     IsNotEmpty,
   } from 'class-validator';
   import { EnumToString } from 'src/common/helpers/enumToString';
+import { LineRectionDto } from './line-reaction.dto';
 
 
   export class CreateReactionDto {
@@ -22,6 +23,10 @@ import {
     @IsInt()
     @IsNotEmpty()
     postId : number
+
+    @IsArray()
+    @IsNotEmpty()
+    linesReactionDto : LineRectionDto[]
 
   }
   

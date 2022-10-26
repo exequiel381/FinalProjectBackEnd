@@ -4,6 +4,7 @@ import {
   IsArray,
  
 } from 'class-validator';
+import { ImagePost } from '../entities/images-post.entity';
 import { CategoryDto } from './category-post.dto';
 import { LinePostDto } from './line-post.dto';
 import { TypePostDto } from './type-post.dto';
