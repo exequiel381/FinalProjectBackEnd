@@ -11,3 +11,19 @@ export const DATABASE_PASSWORD = 'DATABASE_PASSWORD';
 export const DATABASE_NAME = 'DATABASE_NAME';
 export const DEFAULT_USER_EMAIL = 'DEFAULT_USER_EMAIL';
 export const DEFAULT_USER_PASSWORD = 'DEFAULT_USER_PASSWORD';
+
+
+export enum PostStates {
+    FINISHED = 'FINALIZADO',
+    CREATED = 'CREADO'
+}
+export enum LineReactionStates {
+    ACEPTED = 'ACEPTADO',
+    REJECTED = 'RECHAZADO',
+    CREATED = 'CREADO'
+  }
+
+export enum PostTypes {
+    PEDIDO = 'PEDIDO',
+    DONACION = 'DONACION'
+}

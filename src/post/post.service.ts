@@ -7,6 +7,7 @@ import { User } from 'src/user/entities';
 import { ImagePost } from './entities/images-post.entity';
 import { TypePost } from './entities/type-post.entity';
 import { LineaPost } from './entities/lineaPost.entity';
+import { PostStates } from 'src/config/constants';
 
 @Injectable()
 export class PostService {

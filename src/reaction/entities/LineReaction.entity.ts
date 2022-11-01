@@ -1,3 +1,6 @@
+import { IsEnum } from 'class-validator';
+import { EnumToString } from 'src/common/helpers/enumToString';
+import { LineReactionStates } from 'src/config/constants';
 import { LineaPost } from 'src/post/entities/lineaPost.entity';
 import {
     Entity,
@@ -40,5 +43,12 @@ import { Reaction } from './reaction.entity';
     @ManyToOne(()=> LineaPost)
     @JoinColumn({name: 'LineaPost_id'})
     lineaPost : LineaPost
+
+    @Column({ type: 'enum',enum:LineReactionStates, default: LineReactionStates.CREATED })
+    @IsEnum(LineReactionStates, {
+      each: true,
+      message: `El estado debe ser un Enum, ${EnumToString(LineReactionStates)}`,
+    })
+    state: string;
   }
   

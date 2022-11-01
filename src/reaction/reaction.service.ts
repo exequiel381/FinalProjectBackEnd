@@ -21,6 +21,7 @@ export class ReactionService {
       ) {}
 
     async createOne(dto: CreateReactionDto, author: User) {
+        //tendremos que obtener las reacciones de ese post
         let reaction = this.reactionRepository.create({ ...dto });
         let post = await this.postRepository.findOne(dto.postId);
         post.lines = await this.linePostRepository.find({
