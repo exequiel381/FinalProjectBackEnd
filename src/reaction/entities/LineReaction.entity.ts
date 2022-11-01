@@ -1,3 +1,6 @@
+import { IsEnum } from 'class-validator';
+import { EnumToString } from 'src/common/helpers/enumToString';
+import { LineReactionStates } from 'src/config/constants';
 import { LineaPost } from 'src/post/entities/lineaPost.entity';
 import {
     Entity,
@@ -15,9 +18,15 @@ import { Reaction } from './reaction.entity';
   
   @Entity('lineaReaccion')
   export class LineReaction {
+
+    constructor(LinePost : LineaPost, requestQuantity : number){
+      this.cantidad = requestQuantity;
+      this.lineaPost = LinePost;
+    }
+
     @PrimaryGeneratedColumn()
     id: number;
-  
+    
     @Column({ type: 'int' })
     cantidad!: number;
   
@@ -31,8 +40,15 @@ import { Reaction } from './reaction.entity';
     @JoinColumn({name:'reaction_id'})
     reaction : Reaction
     
-    @OneToOne(()=> LineaPost)
+    @ManyToOne(()=> LineaPost)
     @JoinColumn({name: 'LineaPost_id'})
     lineaPost : LineaPost
+
+    @Column({ type: 'enum',enum:LineReactionStates, default: LineReactionStates.CREATED })
+    @IsEnum(LineReactionStates, {
+      each: true,
+      message: `El estado debe ser un Enum, ${EnumToString(LineReactionStates)}`,
+    })
+    state: string;
   }
   

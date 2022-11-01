@@ -1,3 +1,4 @@
+import { Exclude } from 'class-transformer';
 import { LineReaction } from 'src/reaction/entities/lineReaction.entity';
 import {
     Entity,
@@ -30,9 +31,11 @@ import { Post } from './post.entity';
     @Column({ type: 'int' })
     cantidad!: number;
   
+    @Exclude()
     @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
     createdAt: Date;
   
+    @Exclude()
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
     updatedAt: Date;
   
@@ -40,7 +43,7 @@ import { Post } from './post.entity';
     @JoinColumn({name:'post_id'})
     post : Post
     
-    @OneToOne(() => LineReaction, (lineaReaccion) => lineaReaccion.lineaPost)
+    @OneToMany(() => LineReaction, (lineaReaccion) => lineaReaccion.lineaPost)
     lineaReaccion : LineReaction
   }
   
