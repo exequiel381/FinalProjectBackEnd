@@ -22994,3 +22994,8 @@ INSERT INTO finalprojectdb.locality(`id`,`province_id`,`name`,`postalcode`) VALU
 (22963,8,'LAS VEGAS','5549');
 
 UPDATE `finalprojectdb`.`users` SET `locality_id` = '1' WHERE (`id` = '1');
+
+INSERT INTO finalprojectdb.typepost (id, name) VALUES ('1', 'peticion');
+INSERT INTO finalprojectdb.typepost (id, name) VALUES ('2', 'donacion');
+
+INSERT INTO `finalprojectdb`.`category` (`id`, `name`) VALUES ('1', 'Alimentos');

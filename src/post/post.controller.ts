@@ -80,6 +80,8 @@ export class PostController {
     })
   }))
   async createPostWithImages(@Body() CreatePostDto:  CreatePostDto,@UploadedFiles() files: Array<Express.Multer.File>,@User() author: UserEntity) {
+    CreatePostDto.category = {id : CreatePostDto.categoryNumber}
+    CreatePostDto.type = {id : CreatePostDto.typeNumber}
     if(author !== null){
     let images = files?.map((file)=>{
        let image = new ImagePost();

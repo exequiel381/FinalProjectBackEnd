@@ -16,14 +16,17 @@ export class CreatePostDto {
   @IsString()
   content: string;
 
-  @IsNotEmpty()
   type: TypePostDto;
   
-  @IsNotEmpty()
   category: CategoryDto;
   
   @IsArray()
   LinesPostDto : LinePostDto[];
   
+  @IsNotEmpty()
+  typeNumber: number;
+  
+  @IsNotEmpty()
+  categoryNumber: number;
 
 }
