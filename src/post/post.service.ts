@@ -51,7 +51,8 @@ export class PostService {
     let post = this.postRepository.create({ ...dto, author });
     let lines = [];
     dto.LinesPostDto.forEach(element => {
-      lines.push(new LineaPost(element.description,element.cantidad))
+      let obj = JSON.parse(element+"");//Convertir el json en js , esto pasa por mandar con formData un objeto desde el front
+      lines.push(new LineaPost(obj.description,obj.cantidad))
     });
     post.lines = lines;
     return await this.postRepository.save(post);

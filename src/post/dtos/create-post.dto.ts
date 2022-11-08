@@ -2,6 +2,7 @@ import {
   IsNotEmpty,
   IsString,
   IsArray,
+  IsOptional,
  
 } from 'class-validator';
 import { ImagePost } from '../entities/images-post.entity';
