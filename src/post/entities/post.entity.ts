@@ -17,8 +17,9 @@ import { LineaPost } from './lineaPost.entity';
 import { TypePost } from './type-post.entity';
 import { NotFoundException } from '@nestjs/common';
 import { IsEnum } from 'class-validator';
-import { PostStates } from 'src/config/constants';
+import { LineReactionStates, PostStates } from 'src/config/constants';
 import { EnumToString } from 'src/common/helpers/enumToString';
+const _ = require('lodash');
 
   @Entity('posts')
   export class Post {
@@ -55,7 +56,7 @@ import { EnumToString } from 'src/common/helpers/enumToString';
 
     @OneToMany(()=>ImagePost,(imagePost) => imagePost.post,{
       cascade:true,
-      eager:true
+      eager:true,
     })
     images : ImagePost[]
 
@@ -64,7 +65,9 @@ import { EnumToString } from 'src/common/helpers/enumToString';
     })
     lines : LineaPost[]
 
-    @OneToMany(() => Reaction, (reaction) => reaction.post,{ eager: false })
+    @OneToMany(() => Reaction, (reaction) => reaction.post,{
+       eager: false,
+      })
     reactions : Reaction[]
 
     @ManyToOne(
@@ -78,6 +81,8 @@ import { EnumToString } from 'src/common/helpers/enumToString';
     public createReactionLine(idLinePost : number,requestQuantity : number) : LineReaction{
       let LinePost = this.lines.find(l => l.id === idLinePost);
       if(LinePost === null ) throw new NotFoundException('Una de las lineas indicadas no pertenece al post');
+      let ApprovalLinesReaction = LinePost.lineasReaccion.filter(item => item.state === LineReactionStates.ACEPTED);
+      let approvedQuantity = _.sumBy(ApprovalLinesReaction, 'cantidad');
       //obtenemos todas las lineas de reaccion del post , y tomamos de las aceptadas las cantidades, para verificar que no nos soliciten mas de lo que se puede.
       if(LinePost.cantidad < requestQuantity) throw new NotFoundException('No puedes solicitar u ofrecer mas productos de lo publicado');
       return new LineReaction(LinePost,requestQuantity);

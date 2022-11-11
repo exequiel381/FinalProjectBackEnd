@@ -25,7 +25,9 @@ import { Post } from './post.entity';
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
     updatedAt: Date;
 
-    @ManyToOne(()=>Post, (post) => post.images)
+    @ManyToOne(()=>Post, (post) => post.images,{
+      onDelete: "CASCADE",
+    })
     @JoinColumn({name:'post_id'})
     post : Post
   }

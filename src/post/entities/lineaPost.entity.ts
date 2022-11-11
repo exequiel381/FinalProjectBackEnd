@@ -39,11 +39,13 @@ import { Post } from './post.entity';
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
     updatedAt: Date;
   
-    @ManyToOne(()=>Post, (post) => post.lines)
+    @ManyToOne(()=>Post, (post) => post.lines,{
+      onDelete: "CASCADE",
+    })
     @JoinColumn({name:'post_id'})
     post : Post
     
     @OneToMany(() => LineReaction, (lineaReaccion) => lineaReaccion.lineaPost)
-    lineaReaccion : LineReaction
+    lineasReaccion : LineReaction[]
   }
   
