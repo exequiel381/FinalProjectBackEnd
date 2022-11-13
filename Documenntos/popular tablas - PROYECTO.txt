@@ -1,5 +1,6 @@
+/*
 INSERT INTO finalprojectdb.country(`id`,`name`) VALUES
-(1,'Argentina');
+(1,'Argentina');*/
 
 
 INSERT INTO finalprojectdb.province(`id`,`name`,`ISO`,country_id) VALUES
@@ -17,7 +18,7 @@ INSERT INTO finalprojectdb.province(`id`,`name`,`ISO`,country_id) VALUES
 (12,'San Luis','AR-D',1),
 (13,'Santa Fe','AR-S',1),
 (14,'Santiago del Estero','AR-G',1),
-(15,'Tucumán','AR-T',1),
+/*(15,'Tucumán','AR-T',1),*/
 (16,'Chaco','AR-H',1),
 (17,'Chubut','AR-U',1),
 (18,'Formosa','AR-P',1),
@@ -8898,7 +8899,7 @@ INSERT INTO finalprojectdb.locality(`id`,`province_id`,`name`,`postalcode`) VALU
 (8867,15,'GOBERNADOR NOUGES','4111'),
 (8868,15,'KILOMETRO 792','4105'),
 (8869,15,'NUEVOS MATADEROS','4109'),
-(8870,15,'SAN MIGUEL DE TUCUMAN','4000'),
+/*(8870,15,'SAN MIGUEL DE TUCUMAN','4000'),*/
 (8871,15,'VILLA ZENON SANTILLAN','4000'),
 (8872,15,'ALPACHIRI','4149'),
 (8873,15,'ALTO VERDE','4153'),
@@ -22993,9 +22994,3 @@ INSERT INTO finalprojectdb.locality(`id`,`province_id`,`name`,`postalcode`) VALU
 (22962,3,'CANDELARIA','4231'),
 (22963,8,'LAS VEGAS','5549');
 
-UPDATE `finalprojectdb`.`users` SET `locality_id` = '1' WHERE (`id` = '1');
-
-INSERT INTO finalprojectdb.typepost (id, name) VALUES ('1', 'peticion');
-INSERT INTO finalprojectdb.typepost (id, name) VALUES ('2', 'donacion');
-
-INSERT INTO `finalprojectdb`.`category` (`id`, `name`) VALUES ('1', 'Alimentos');

@@ -17,6 +17,9 @@ const setDefaultUser = async (config: ConfigService) => {
     const adminUser = userRepository.create({
       email: config.get<string>(DEFAULT_USER_EMAIL),
       password: config.get<string>(DEFAULT_USER_PASSWORD),
+      locality : {
+        id : 8870
+      },
       roles: ['ADMIN'],
     });
 

@@ -20,10 +20,10 @@ async function bootstrap() {
   initSwagger(app);
 
 //#region 
-  setDefaultUser(config);
+  await setLocation(config);
   setTypes(config);
   setCategories(config);
-  //setLocation(config);
+  setDefaultUser(config);
 //#endregion
 
   generateTypeormConfigFile(config);
