@@ -8,7 +8,17 @@ const setTypes = async (config: ConfigService) => {
   const types = await typesRepository.find();
     
   if (types.length === 0) {
-    
+    const Donacion = typesRepository.create({
+      name: "Donacion",
+    });
+
+    const Peticion = typesRepository.create({
+      name: "Peticion",
+    });
+
+    types.push(Donacion,Peticion);
+
+    return await typesRepository.save(types);
   }
 };
 

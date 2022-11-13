@@ -6,6 +6,9 @@ import { initSwagger } from './app.swagger';
 import { ConfigService } from '@nestjs/config';
 import { SERVER_PORT } from './config/constants';
 import { generateTypeormConfigFile, setDefaultUser } from './scripts';
+import setTypes from './scripts/set-types';
+import setCategories from './scripts/set-categories';
+import setLocation from './scripts/set-location';
 
 async function bootstrap() {
   const app = await NestFactory.create(AppModule);
@@ -15,7 +18,14 @@ async function bootstrap() {
 
 
   initSwagger(app);
+
+//#region 
   setDefaultUser(config);
+  setTypes(config);
+  setCategories(config);
+  //setLocation(config);
+//#endregion
+
   generateTypeormConfigFile(config);
 
   app.enableCors();
