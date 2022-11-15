@@ -9,10 +9,9 @@ import {
     JoinColumn,
     UpdateDateColumn,
     OneToMany,
-    OneToOne
   } from 'typeorm';
+import { Category } from './category.entity';
 import { Post } from './post.entity';
-//   import { User } from 'src/user/entities';
   
   @Entity('lineaPost')
   export class LineaPost {
@@ -44,6 +43,12 @@ import { Post } from './post.entity';
     })
     @JoinColumn({name:'post_id'})
     post : Post
+
+    @ManyToOne(()=>Category, (category) => category.lineasPosts,{
+      onDelete: "CASCADE",
+    })
+    @JoinColumn({name:'category_id'})
+    category : Category
     
     @OneToMany(() => LineReaction, (lineaReaccion) => lineaReaccion.lineaPost)
     lineasReaccion : LineReaction[]

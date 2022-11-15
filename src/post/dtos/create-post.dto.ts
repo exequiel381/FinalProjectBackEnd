@@ -19,15 +19,10 @@ export class CreatePostDto {
 
   type: TypePostDto;
   
-  category: CategoryDto;
-  
   @IsArray()
   LinesPostDto : LinePostDto[];
   
   @IsNotEmpty()
   typeNumber: number;
-  
-  @IsNotEmpty()
-  categoryNumber: number;
 
 }

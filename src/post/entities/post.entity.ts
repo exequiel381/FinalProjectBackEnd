@@ -50,10 +50,6 @@ const _ = require('lodash');
     @JoinColumn({name:'type_id'})
     type? : TypePost;
 
-    @ManyToOne(()=>Category, (category) => category.posts)//Muchos post , a un typo
-    @JoinColumn({name:'category_id'})
-    category? : TypePost;
-
     @OneToMany(()=>ImagePost,(imagePost) => imagePost.post,{
       cascade:true,
       eager:true,

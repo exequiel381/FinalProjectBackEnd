@@ -3,13 +3,11 @@ import {
     PrimaryGeneratedColumn,
     Column,
     CreateDateColumn,
-    ManyToOne,
-    JoinColumn,
     UpdateDateColumn,
     OneToMany
   } from 'typeorm';
-import { Post } from './post.entity';
-//   import { User } from 'src/user/entities';
+import { LineaPost } from './lineaPost.entity';
+
   
   @Entity('category')
   export class Category {
@@ -25,8 +23,7 @@ import { Post } from './post.entity';
     @UpdateDateColumn({ name: 'updated_at', type: 'timestamp' })
     updatedAt: Date;
   
-    @OneToMany(() => Post, (post) => post.category)//Un pais a muchas provincias
-    posts : Post[];
-    
+    @OneToMany(() => LineaPost, (lineaPost) => lineaPost.category)//Un pais a muchas provincias
+    lineasPosts : LineaPost[];
   }
   
