@@ -38,13 +38,13 @@ export class PostController {
   @Get()
   async getMany() {
     const data = await this.postService.getMany();
-    return { data };
+    return data ;
   }
 
   @Get('/categories')
   async getManyCategories() {
     const data = await this.postService.getManyCategories();
-    return { data };
+    return data;
   }
 
   @Auth()
