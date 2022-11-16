@@ -11,6 +11,11 @@ import { LineaPost } from './lineaPost.entity';
   
   @Entity('category')
   export class Category {
+
+    constructor(idCategory:number) {
+      this.id = idCategory;
+    }
+
     @PrimaryGeneratedColumn()
     id: number;
   

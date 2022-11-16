@@ -16,9 +16,10 @@ import { Post } from './post.entity';
   @Entity('lineaPost')
   export class LineaPost {
 
-    constructor(description : string,cantidad : number) {
+    constructor(description : string,cantidad : number,idCategory:number) {
       this.descripcion = description;
       this.cantidad = cantidad;
+      this.category = new Category(idCategory);
     }
 
     @PrimaryGeneratedColumn()
