@@ -16,11 +16,17 @@ export class PostService {
     private readonly postRepository: Repository<Post>,
     @InjectRepository(LineaPost)
     private readonly linePostRepository: Repository<LineaPost>,
+    @InjectRepository(Category)
+    private readonly categoryRepository: Repository<Category>,
     
   ) {}
 
   async getMany() {
     return await this.postRepository.find();
+  }
+
+  async getManyCategories() {
+    return await this.categoryRepository.find();
   }
 
   async getById(id: number, author?: User) {

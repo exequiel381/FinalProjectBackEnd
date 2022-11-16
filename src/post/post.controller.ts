@@ -41,6 +41,12 @@ export class PostController {
     return { data };
   }
 
+  @Get('/categories')
+  async getManyCategories() {
+    const data = await this.postService.getManyCategories();
+    return { data };
+  }
+
   @Auth()
   @Get('/postbyuser')
   async getPostByUser(@User() author: UserEntity) {
