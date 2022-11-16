@@ -10,6 +10,6 @@ export class LinePostDto{
 
   category: CategoryDto;
 
-  // @IsOptional()
-  // categoryNumber: number;
+  @IsOptional()
+  categoryNumber: number;
 }

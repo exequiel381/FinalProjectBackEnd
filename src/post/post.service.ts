@@ -58,7 +58,7 @@ export class PostService {
     let lines = [];
     dto.LinesPostDto.forEach(element => {
       let obj = JSON.parse(element+"");//Convertir el json en js , esto pasa por mandar con formData un objeto desde el front
-      lines.push(new LineaPost(obj.description,obj.cantidad,obj.category.id))
+      lines.push(new LineaPost(obj.description,obj.cantidad,obj.categoryNumber))
     });
     post.lines = lines;
     return await this.postRepository.save(post);
