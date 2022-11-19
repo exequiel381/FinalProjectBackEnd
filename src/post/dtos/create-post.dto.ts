@@ -3,6 +3,7 @@ import {
   IsString,
   IsArray,
   IsOptional,
+  IsBoolean,
  
 } from 'class-validator';
 import { ImagePost } from '../entities/images-post.entity';
@@ -16,6 +17,12 @@ export class CreatePostDto {
 
   @IsString()
   content: string;
+
+  @IsString()
+  movilityString: string;
+
+  
+  movility: boolean;
 
   type: TypePostDto;
   

@@ -91,6 +91,7 @@ export class PostController {
     @User() author: UserEntity,
   ) {
     CreatePostDto.type = { id: CreatePostDto.typeNumber };
+    CreatePostDto.movility = CreatePostDto.movilityString === 'true';
     if (author !== null) {
       let images = files?.map((file) => {
         let image = new ImagePost();

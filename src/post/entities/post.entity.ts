@@ -32,6 +32,9 @@ const _ = require('lodash');
     @Column({ type: 'text' })
     content!: string;
 
+    @Column({ type: 'boolean' })
+    movility: boolean;
+
     @Column({ type: 'enum',enum:PostStates, default: PostStates.CREATED })
     @IsEnum(PostStates, {
       each: true,
@@ -46,7 +49,9 @@ const _ = require('lodash');
     updatedAt: Date;
   
 
-    @ManyToOne(()=>TypePost, (typePost) => typePost.posts)//Muchos post , a un typo
+    @ManyToOne(()=>TypePost, (typePost) => typePost.posts,{
+      eager:true,
+    })//Muchos post , a un typo
     @JoinColumn({name:'type_id'})
     type? : TypePost;
 

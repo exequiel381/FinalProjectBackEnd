@@ -70,7 +70,9 @@ import { Calification } from './calification.entity';
       this.password = await hash(this.password, 10);
     }
   
-    @ManyToOne(()=>Locality,(locality) => locality.users)
+    @ManyToOne(()=>Locality,(locality) => locality.users,{
+      eager:true,
+    })
     @JoinColumn({name:'locality_id'})
     locality : Locality
 

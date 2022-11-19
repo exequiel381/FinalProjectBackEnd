@@ -19,7 +19,7 @@ import { Post } from './post.entity';
     @Column({ type: 'varchar', length: 150 })
     name!: string;
 
-    @Column({ type: 'longblob'})
+    @Column({ type: 'longtext'})
     base!: string;
   
     @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
