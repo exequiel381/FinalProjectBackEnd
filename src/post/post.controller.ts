@@ -22,12 +22,10 @@ import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { RenameImage } from 'src/images/images.helper';
 import { ImagePost } from './entities/images-post.entity';
-const imageToBase64 = require('image-to-base64');
 var fs = require('fs');
 @ApiTags('Posts Routes')
 @Controller('post')
 export class PostController {
-
   constructor(
     private readonly postService: PostService,
     @InjectRolesBuilder()
@@ -38,7 +36,7 @@ export class PostController {
   @Get()
   async getMany() {
     const data = await this.postService.getMany();
-    return data ;
+    return data;
   }
 
   @Get('/categories')
@@ -55,7 +53,7 @@ export class PostController {
   }
 
   @Get(':id')
-  async getById(@Param('id', ParseIntPipe) id: number){
+  async getById(@Param('id', ParseIntPipe) id: number) {
     const data = await this.postService.getById(id);
     return { data };
   }
@@ -67,10 +65,10 @@ export class PostController {
   })
   @Post()
   async createPost(@Body() dto: CreatePostDto, @User() author: UserEntity) {
-    if(author !== null){
+    if (author !== null) {
       const data = await this.postService.createOne(dto, author);
       return { message: 'Post created', data };
-    }else return { message: 'No se encontro el usuario' };
+    } else return { message: 'No se encontro el usuario' };
   }
 
   @Auth({
@@ -79,28 +77,36 @@ export class PostController {
     possession: 'own',
   })
   @Post('newpostwithimages')
-  @UseInterceptors(FilesInterceptor('files',5,{
-    storage : diskStorage({
-      destination : './upload',
-      filename : RenameImage,
-    })
-  }))
-  async createPostWithImages(@Body() CreatePostDto:  CreatePostDto,@UploadedFiles() files: Array<Express.Multer.File>,@User() author: UserEntity) {
-    
-    CreatePostDto.type = {id : CreatePostDto.typeNumber}
-    if(author !== null){
-    let images = files?.map((file)=>{
-       let image = new ImagePost();
-       image.name = file.filename;
-       image.base = fs.readFileSync("D:/Unidad Exe/Programacion/Codigos/DonArg/backEnd/upload/"+file.filename, 'base64');
-       return image;
-    })
-    CreatePostDto["images"] = images;
-    const data = await this.postService.createOne(CreatePostDto, author);
-    return { message: 'Post created', data };
-    }else return { message: 'No se encontro el usuario' };
+  @UseInterceptors(
+    FilesInterceptor('files', 5, {
+      storage: diskStorage({
+        destination: './upload',
+        filename: RenameImage,
+      }),
+    }),
+  )
+  async createPostWithImages(
+    @Body() CreatePostDto: CreatePostDto,
+    @UploadedFiles() files: Array<Express.Multer.File>,
+    @User() author: UserEntity,
+  ) {
+    CreatePostDto.type = { id: CreatePostDto.typeNumber };
+    if (author !== null) {
+      let images = files?.map((file) => {
+        let image = new ImagePost();
+        image.name = file.filename;
+        image.base = fs.readFileSync(
+          'D:/Unidad Exe/Programacion/Codigos/DonArg/backEnd/upload/' +
+            file.filename,
+          'base64',
+        );
+        return image;
+      });
+      CreatePostDto['images'] = images;
+      const data = await this.postService.createOne(CreatePostDto, author);
+      return { message: 'Post created', data };
+    } else return { message: 'No se encontro el usuario' };
   }
-
 
   @Auth({
     resource: AppResource.POST,
@@ -145,8 +151,6 @@ export class PostController {
     }
     return { message: 'Post deleted', data };
   }
-
-
 
   /*Ejemplos de subida de archivos 
    @Post('testUpload')//Funcionando para subir una imagen
