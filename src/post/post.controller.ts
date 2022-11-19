@@ -22,8 +22,8 @@ import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
 import { RenameImage } from 'src/images/images.helper';
 import { ImagePost } from './entities/images-post.entity';
-
-
+const imageToBase64 = require('image-to-base64');
+var fs = require('fs');
 @ApiTags('Posts Routes')
 @Controller('post')
 export class PostController {
@@ -86,11 +86,13 @@ export class PostController {
     })
   }))
   async createPostWithImages(@Body() CreatePostDto:  CreatePostDto,@UploadedFiles() files: Array<Express.Multer.File>,@User() author: UserEntity) {
+    
     CreatePostDto.type = {id : CreatePostDto.typeNumber}
     if(author !== null){
     let images = files?.map((file)=>{
        let image = new ImagePost();
        image.name = file.filename;
+       image.base = fs.readFileSync("D:/Unidad Exe/Programacion/Codigos/DonArg/backEnd/upload/"+file.filename, 'base64');
        return image;
     })
     CreatePostDto["images"] = images;

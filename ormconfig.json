@@ -6,12 +6,12 @@
   "password": "bgnyvxpg",
   "database": "finalprojectdb",
   "entities": [
-    "D:\\Unidad Exe\\Programacion\\Codigos\\NestJs\\finalproject\\dist\\**\\**\\*entity{.ts,.js}"
+    "D:\\Unidad Exe\\Programacion\\Codigos\\DonArg\\backEnd\\dist\\**\\**\\*entity{.ts,.js}"
   ],
   "autoLoadEntities": true,
   "migrationsRun": false,
   "migrations": [
-    "D:\\Unidad Exe\\Programacion\\Codigos\\NestJs\\finalproject\\dist\\migration\\**\\*{.ts,.js}"
+    "D:\\Unidad Exe\\Programacion\\Codigos\\DonArg\\backEnd\\dist\\migration\\**\\*{.ts,.js}"
   ],
   "migrationsTableName": "migrations_typeorm",
   "cli": {
