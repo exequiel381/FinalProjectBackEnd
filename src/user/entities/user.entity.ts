@@ -5,7 +5,6 @@ import {
     BeforeInsert,
     BeforeUpdate,
     Entity,
-    OneToOne,
     OneToMany,
     ManyToOne,
     JoinColumn,
@@ -14,7 +13,6 @@ import {
   import { Post } from 'src/post/entities';
 import { Reaction } from 'src/reaction/entities';
 import { Locality } from 'src/location/entities/locality.entity';
-import { Exclude } from 'class-transformer';
 import { Calification } from './calification.entity';
   
   @Entity('users')

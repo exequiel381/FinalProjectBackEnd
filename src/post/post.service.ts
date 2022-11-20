@@ -4,10 +4,8 @@ import { Repository } from 'typeorm';
 import { Category, Post } from './entities';
 import { CreatePostDto, EditPostDto } from './dtos';
 import { User } from 'src/user/entities';
-import { ImagePost } from './entities/images-post.entity';
-import { TypePost } from './entities/type-post.entity';
 import { LineaPost } from './entities/lineaPost.entity';
-import { PostStates } from 'src/config/constants';
+const _ = require('lodash');
 
 @Injectable()
 export class PostService {
@@ -22,7 +20,8 @@ export class PostService {
   ) {}
 
   async getMany() {
-    return await this.postRepository.find();
+    let posts = await this.postRepository.find();
+    return _.orderBy(posts,"createdAt");
   }
 
   async getManyCategories() {

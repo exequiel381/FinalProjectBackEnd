@@ -11,7 +11,6 @@ import {
     UpdateDateColumn,
     OneToMany
   } from 'typeorm';
-import { Category } from './category.entity';
 import { ImagePost } from './images-post.entity';
 import { LineaPost } from './lineaPost.entity';
 import { TypePost } from './type-post.entity';
