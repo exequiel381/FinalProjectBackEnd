@@ -21,7 +21,7 @@ export class PostService {
 
   async getMany() {
     let posts = await this.postRepository.find();
-    return _.orderBy(posts,"createdAt");
+    return _.orderBy(posts,"createdAt","desc");
   }
 
   async getManyCategories() {
