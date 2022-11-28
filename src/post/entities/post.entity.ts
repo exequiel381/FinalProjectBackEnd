@@ -1,6 +1,6 @@
-import { Reaction } from 'src/reaction/entities';
-import { LineReaction } from 'src/reaction/entities/lineReaction.entity';
-import { User } from 'src/user/entities';
+import { Reaction } from '../../reaction/entities';
+import { LineReaction } from '../../reaction/entities/lineReaction.entity';
+import { User } from '../../user/entities';
 import {
     Entity,
     PrimaryGeneratedColumn,
@@ -16,8 +16,8 @@ import { LineaPost } from './lineaPost.entity';
 import { TypePost } from './type-post.entity';
 import { NotFoundException } from '@nestjs/common';
 import { IsEnum } from 'class-validator';
-import { LineReactionStates, PostStates } from 'src/config/constants';
-import { EnumToString } from 'src/common/helpers/enumToString';
+import { LineReactionStates, PostStates } from '../../config/constants';
+import { EnumToString } from '../../common/helpers/enumToString';
 const _ = require('lodash');
 
   @Entity('posts')

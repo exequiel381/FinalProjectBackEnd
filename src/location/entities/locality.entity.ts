@@ -1,4 +1,4 @@
-import { User } from 'src/user/entities';
+import { User } from '../../user/entities';
 import {
     Entity,
     PrimaryGeneratedColumn,
@@ -11,7 +11,7 @@ import {
   } from 'typeorm';
 import { Country } from './country.entity';
 import { Province } from './province.entity';
-//   import { User } from 'src/user/entities';
+//   import { User } from '../user/entities';
   
   @Entity('locality')
   export class Locality {

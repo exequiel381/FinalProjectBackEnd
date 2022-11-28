@@ -10,9 +10,9 @@ import {
     JoinColumn,
   } from 'typeorm';
   import { hash } from 'bcryptjs';
-  import { Post } from 'src/post/entities';
-import { Reaction } from 'src/reaction/entities';
-import { Locality } from 'src/location/entities/locality.entity';
+  import { Post } from '../../post/entities';
+import { Reaction } from '../../reaction/entities';
+import { Locality } from '../../location/entities/locality.entity';
 import { Calification } from './calification.entity';
   
   @Entity('users')

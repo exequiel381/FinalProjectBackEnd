@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
-import { TypePost } from 'src/post/entities/type-post.entity';
+import { TypePost } from '../post/entities/type-post.entity';
 
 const setTypes = async (config: ConfigService) => {
   const typesRepository = getRepository<TypePost>(TypePost);

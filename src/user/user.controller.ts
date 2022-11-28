@@ -11,9 +11,9 @@ import {
   import { CreateUserDto, EditUserDto, UserRegistrationDto } from './dtos';
   import { ApiTags } from '@nestjs/swagger';
   import { RolesBuilder, InjectRolesBuilder } from 'nest-access-control';
-  import { AppResource, AppRoles } from 'src/app.roles';
+  import { AppResource, AppRoles } from '../app.roles';
   import { User as UserEntity } from './entities';
-import { Auth, User } from 'src/common/decorators';
+import { Auth, User } from '../common/decorators';
 
   
   @ApiTags('Users routes')

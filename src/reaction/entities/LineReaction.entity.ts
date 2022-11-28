@@ -1,7 +1,7 @@
 import { IsEnum } from 'class-validator';
-import { EnumToString } from 'src/common/helpers/enumToString';
-import { LineReactionStates } from 'src/config/constants';
-import { LineaPost } from 'src/post/entities/lineaPost.entity';
+import { EnumToString } from '../../common/helpers/enumToString';
+import { LineReactionStates } from '../../config/constants';
+import { LineaPost } from '../../post/entities/lineaPost.entity';
 import {
     Entity,
     PrimaryGeneratedColumn,
@@ -14,7 +14,7 @@ import {
     OneToOne
   } from 'typeorm';
 import { Reaction } from './reaction.entity';
-//   import { User } from 'src/user/entities';
+//   import { User } from '../user/entities';
   
   @Entity('lineaReaccion')
   export class LineReaction {

@@ -13,14 +13,14 @@ import {
 } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { InjectRolesBuilder, RolesBuilder } from 'nest-access-control';
-import { AppResource } from 'src/app.roles';
+import { AppResource } from '../app.roles';
 import { PostService } from './post.service';
 import { CreatePostDto, EditPostDto } from './dtos';
-import { User, Auth } from 'src/common/decorators';
-import { User as UserEntity } from 'src/user/entities';
+import { User, Auth } from '../common/decorators';
+import { User as UserEntity } from '../user/entities';
 import { FileInterceptor, FilesInterceptor } from '@nestjs/platform-express';
 import { diskStorage } from 'multer';
-import { RenameImage } from 'src/images/images.helper';
+import { RenameImage } from '../images/images.helper';
 import { ImagePost } from './entities/images-post.entity';
 var fs = require('fs');
 @ApiTags('Posts Routes')

@@ -10,7 +10,7 @@ import {
     IsNumber,
     IsNotEmpty,
   } from 'class-validator';
-  import { EnumToString } from 'src/common/helpers/enumToString';
+  import { EnumToString } from '../../common/helpers/enumToString';
 import { LineRectionDto } from './line-reaction.dto';
 
 

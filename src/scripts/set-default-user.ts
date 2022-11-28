@@ -1,7 +1,7 @@
 import { getRepository } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
 import { DEFAULT_USER_EMAIL, DEFAULT_USER_PASSWORD } from '../config/constants';
-import { User } from 'src/user/entities';
+import { User } from '../user/entities';
 
 const setDefaultUser = async (config: ConfigService) => {
   const userRepository = getRepository<User>(User);

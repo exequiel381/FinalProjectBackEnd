@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Category, Post } from './entities';
 import { CreatePostDto, EditPostDto } from './dtos';
-import { User } from 'src/user/entities';
+import { User } from '../user/entities';
 import { LineaPost } from './entities/lineaPost.entity';
 const _ = require('lodash');
 

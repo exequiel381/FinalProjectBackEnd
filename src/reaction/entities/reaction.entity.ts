@@ -1,7 +1,5 @@
-import { IsEnum } from 'class-validator';
-import { EnumToString } from 'src/common/helpers/enumToString';
-import { Post } from 'src/post/entities';
-import { User } from 'src/user/entities';
+import { Post } from '../../post/entities';
+import { User } from '../../user/entities';
 import {
     Entity,
     PrimaryGeneratedColumn,

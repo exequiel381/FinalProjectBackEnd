@@ -6,7 +6,7 @@ import { ConfigService } from '@nestjs/config';
 import { JWT_SECRET } from '../config/constants';
 import { AuthService } from './auth.service';
 import { AuthController } from './auth.controller';
-import { UserModule } from 'src/user/user.module';
+import { UserModule } from '../user/user.module';
 import { LocalStrategy, JwtStrategy } from './strategies';
 
 @Module({

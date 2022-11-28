@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
-import { Country, Locality, Province } from 'src/location/entities';
+import { Country, Locality, Province } from '../location/entities';
 
 const setLocation = async (config: ConfigService) => {
   const countryRepository = getRepository<Country>(Country);

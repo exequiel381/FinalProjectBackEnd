@@ -10,9 +10,9 @@ import {
   } from '@nestjs/common';
 import { ApiTags } from '@nestjs/swagger';
 import { InjectRolesBuilder } from 'nest-access-control';
-import { AppResource } from 'src/app.roles';
-import { Auth, User } from 'src/common/decorators';
-import { User as UserEntity } from 'src/user/entities';
+import { AppResource } from '../app.roles';
+import { Auth, User } from '../common/decorators';
+import { User as UserEntity } from '../user/entities';
 import { CreateReactionDto } from './dtos/create-reaction.dto';
 import { GetReactionDto } from './dtos/get-reaction.dto';
 import { ReactionService } from './reaction.service';

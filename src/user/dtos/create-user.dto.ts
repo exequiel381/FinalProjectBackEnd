@@ -10,10 +10,10 @@ import {
     IsNumber,
     IsNotEmpty,
   } from 'class-validator';
-import { AppRoles } from 'src/app.roles';
-//   import { AppRoles } from 'src/app.roles';
-  import { EnumToString } from 'src/common/helpers/enumToString';
-import { localityDto } from 'src/location/dtos/localityDto.dto';
+import { AppRoles } from '../../app.roles';
+//   import { AppRoles } from '../app.roles';
+  import { EnumToString } from '../../common/helpers/enumToString';
+import { localityDto } from '../../location/dtos/localityDto.dto';
 
   export class CreateUserDto {
     @IsOptional()

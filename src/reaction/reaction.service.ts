@@ -1,8 +1,8 @@
 import { Injectable,NotFoundException } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Post } from 'src/post/entities';
-import { LineaPost } from 'src/post/entities/lineaPost.entity';
-import { User } from 'src/user/entities';
+import { Post } from '../post/entities';
+import { LineaPost } from '../post/entities/lineaPost.entity';
+import { User } from '../user/entities';
 import { Repository } from 'typeorm';
 import { CreateReactionDto } from './dtos/create-reaction.dto';
 import { Reaction } from './entities';

@@ -9,7 +9,7 @@ import {
     OneToMany
   } from 'typeorm';
 import { Post } from './post.entity';
-//   import { User } from 'src/user/entities';
+//   import { User } from '../user/entities';
   
   @Entity('typePost')
   export class TypePost {

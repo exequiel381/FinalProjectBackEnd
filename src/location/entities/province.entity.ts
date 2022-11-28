@@ -10,7 +10,7 @@ import {
   } from 'typeorm';
 import { Country } from './country.entity';
 import { Locality } from './locality.entity';
-//   import { User } from 'src/user/entities';
+//   import { User } from '../user/entities';
   
   @Entity('province')
   export class Province {

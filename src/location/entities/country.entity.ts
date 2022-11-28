@@ -9,7 +9,7 @@ import {
     UpdateDateColumn
   } from 'typeorm';
 import { Province } from './province.entity';
-//   import { User } from 'src/user/entities';
+//   import { User } from '../user/entities';
   
   @Entity('country')
   export class Country {

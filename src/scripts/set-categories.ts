@@ -1,6 +1,6 @@
 import { getRepository } from 'typeorm';
 import { ConfigService } from '@nestjs/config';
-import { Category } from 'src/post/entities';
+import { Category } from '../post/entities';
 
 const setCategories = async (config: ConfigService) => {
   const categoryRepository = getRepository<Category>(Category);
