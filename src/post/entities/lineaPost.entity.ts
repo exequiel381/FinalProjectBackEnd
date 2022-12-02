@@ -1,5 +1,5 @@
 import { Exclude } from 'class-transformer';
-import { LineReaction } from 'src/reaction/entities/lineReaction.entity';
+import { LineReaction } from '../../reaction/entities/lineReaction.entity';
 import {
     Entity,
     PrimaryGeneratedColumn,

@@ -4,21 +4,15 @@ import { INestApplication } from '@nestjs/common';
 import { PostModule } from '../src/post/post.module';
 
 describe('PostController (e2e)', () => {
-  let app: INestApplication;
-
-  beforeAll(async () => {
-    const moduleFixture = await Test.createTestingModule({
-      imports: [PostModule],
-    }).compile();
-
-    app = moduleFixture.createNestApplication();
-    await app.init();
+  var localUrl = 'http://[::1]:3000';
+  beforeAll(() => {
+    //obtener Token
   });
 
   it('/ (GET)', () => {
-    return request(app.getHttpServer())
-      .get('/')
+    return request(localUrl)
+      .get('/post')
       .expect(200)
-      .expect('Hello World!');
+      //.expect('Hello World!');
   });
 });
